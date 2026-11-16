@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="vitals">
+  <title>Ciências 8º Ano — Gestação, Amamentação e Formação de Gêmeos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js" defer></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Vitals) */
+      --background: #ffffff;
+      --surface-container-low: #f1f7f8;
+      --surface-container: #e3f1f3;
+      --surface-container-high: #d5e9ec;
+
+      /* Text */
+      --on-surface: #1b2b33;
+      --on-surface-variant: #46585f;
+
+      /* Rules */
+      --outline: #7b9198;
+      --outline-variant: #d5e3e5;
+
+      /* Accents */
+      --primary: #0f7c8a;
+      --on-primary: #ffffff;
+      --primary-container: #e3f1f3;
+      --on-primary-container: #0a5560;
+      --secondary: #1d5e3a;
+      --tertiary: #2e7d4f;
+      --error: #b3261e;
+      --on-error: #ffffff;
+
+      /* Data series */
+      --data-1: #0f7c8a;
+      --data-2: #2e7d4f;
+      --data-3: #b86e00;
+      --data-4: #5c5fb0;
+      --data-context: #b8c7ca;
+
+      /* Fonts */
+      --font-headline: 'Figtree', sans-serif;
+      --font-body: 'Atkinson Hyperlegible', sans-serif;
+      --font-label: 'Figtree', sans-serif;
+
+      /* Shape */
+      --rounded: 0.625rem;
+      --rounded-lg: 0.875rem;
+      --rounded-full: 9999px;
+
+      /* Style effects */
+      --top-bar: 6px solid var(--primary);
+      --status-bar-width: 4px;
+      --card-border: 1px solid var(--outline-variant);
+      --card-lift: 0 1px 2px rgb(27 43 51 / 0.05), 0 6px 16px rgb(27 43 51 / 0.05);
+
+      /* Shared tokens */
+      --positive: var(--tertiary);
+      --warning: var(--data-3);
+      --focus: var(--primary);
+
+      /* Type scale (Focused Tool) */
+      --display-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem);
+      --headline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+      --body-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+      --label-size: 0.75rem;
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--surface-container-low);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* Focus rings */
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Top bar (Vitals Treatment 2) */
+    .page-shell {
+      border-top: var(--top-bar);
+      min-height: 100vh;
+    }
+
+    .page-grid {
+      display: grid;
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      max-width: 1120px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Header */
+    .hero-header {
+      background: var(--background);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg) var(--space-xl);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .kicker {
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: var(--label-size);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin: 0;
+    }
+
+    .title {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--display-size);
+      letter-spacing: -0.015em;
+      line-height: 1.08;
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .lede {
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--on-surface-variant);
+      max-width: 64ch;
+      margin: 0;
+    }
+
+    /* Navigation Tabs (Vitals) */
+    .nav-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      border-top: var(--card-border);
+      padding-top: var(--space-md);
+      margin-top: var(--space-xs);
+    }
+
+    .tabs-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      border-radius: var(--rounded) var(--rounded) 0 0;
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: var(--body-size);
+      color: var(--on-surface-variant);
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out);
+    }
+
+    .tab-btn:hover {
+      background-color: var(--surface-container-low);
+      color: var(--on-surface);
+    }
+
+    .tab-btn[aria-selected="true"] {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background-color: var(--surface-container-low);
+    }
+
+    .tab-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      font-variant-numeric: tabular-nums;
+      padding: 2px var(--space-sm);
+      border-radius: var(--rounded-full);
+      background-color: var(--surface-container);
+      color: var(--on-primary-container);
+    }
+
+    .tab-btn[aria-selected="true"] .tab-badge {
+      background-color: var(--primary);
+      color: var(--on-primary);
+    }
+
+    /* Status KPI Row */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+
+    .status-card {
+      background: var(--background);
+      border: var(--card-border);
+      border-left: var(--status-bar-width) solid var(--primary);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+    }
+    .status-card[data-status="ok"] { border-left-color: var(--tertiary); }
+    .status-card[data-status="alert"] { border-left-color: var(--error); }
+    .status-card[data-status="warn"] { border-left-color: var(--warning); }
+
+    .kpi-label {
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: var(--label-size);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--on-surface-variant);
+      margin: 0 0 var(--space-xs) 0;
+    }
+
+    .kpi-value {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+      font-variant-numeric: tabular-nums;
+      color: var(--on-surface);
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .kpi-caption {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      margin: var(--space-xs) 0 0 0;
+    }
+    .kpi-caption[data-status="ok"] { color: var(--secondary); font-weight: 700; }
+    .kpi-caption[data-status="alert"] { color: var(--error); font-weight: 700; }
+
+    /* Chips (Vitals Treatment 4) */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: var(--label-size);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      background: color-mix(in srgb, var(--tertiary) 14%, var(--background));
+      color: var(--secondary);
+      white-space: nowrap;
+    }
+    .chip[data-status="info"] {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+    .chip[data-status="alert"] {
+      background: color-mix(in srgb, var(--error) 10%, var(--background));
+      color: var(--error);
+    }
+    .chip[data-status="neutral"] {
+      background: var(--surface-container-low);
+      color: var(--on-surface-variant);
+      border: var(--card-border);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-lg);
+      border-radius: var(--rounded);
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: var(--body-size);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out),
+                  box-shadow var(--dur-micro) var(--ease-out),
+                  transform var(--dur-micro) var(--ease-out);
+    }
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--on-primary);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background-color: var(--on-primary-container);
+    }
+    .btn-secondary {
+      background-color: var(--background);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background-color: var(--surface-container-low);
+    }
+    .btn-ghost {
+      background-color: transparent;
+      color: var(--on-surface-variant);
+      border-color: var(--outline-variant);
+    }
+    .btn-ghost:hover:not(:disabled) {
+      background-color: var(--surface-container-low);
+      color: var(--on-surface);
+    }
+    .btn-sm {
+      min-height: 38px;
+      padding: var(--space-xs) var(--space-md);
+      font-size: 0.875rem;
+    }
+
+    /* Filter Toolbar */
+    .toolbar {
+      background: var(--background);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .filter-pill {
+      min-height: 40px;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      border: 1px solid var(--outline-variant);
+      background: var(--background);
+      color: var(--on-surface-variant);
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out);
+    }
+    .filter-pill:hover {
+      background-color: var(--surface-container-low);
+      color: var(--on-surface);
+    }
+    .filter-pill[aria-pressed="true"] {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+
+    /* Thematic Section Blocks (Resumo) */
+    .summary-flow {
+      display: grid;
+      gap: var(--space-xl);
+    }
+
+    .module-block {
+      display: grid;
+      gap: var(--space-lg);
+    }
+    .module-block[hidden] { display: none; }
+
+    .module-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: 1px solid var(--outline-variant);
+      padding-bottom: var(--space-sm);
+    }
+
+    .section-title {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--headline-size);
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .module-subtitle {
+      font-size: 0.9375rem;
+      color: var(--on-surface-variant);
+      margin: var(--space-xs) 0 0 0;
+    }
+
+    /* Visual Schematic Cards */
+    .schematic-card {
+      background: var(--background);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .schematic-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .schematic-caption {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+      max-width: 68ch;
+    }
+
+    .svg-frame {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .svg-frame svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 320px;
+    }
+
+    /* SVG Palette Classes (No inline hex!) */
+    .svg-bg-white { fill: var(--background); }
+    .svg-bg-wash { fill: var(--surface-container-low); }
+    .svg-bg-teal-tint { fill: var(--primary-container); }
+    .svg-bg-green-tint { fill: color-mix(in srgb, var(--tertiary) 14%, var(--background)); }
+    .svg-bg-amber-tint { fill: color-mix(in srgb, var(--warning) 14%, var(--background)); }
+    .svg-fill-teal { fill: var(--primary); }
+    .svg-fill-green { fill: var(--tertiary); }
+    .svg-fill-amber { fill: var(--warning); }
+    .svg-fill-indigo { fill: var(--data-4); }
+    .svg-fill-ink { fill: var(--on-surface); }
+    .svg-fill-muted { fill: var(--on-surface-variant); }
+    .svg-fill-white { fill: var(--on-primary); }
+    .svg-stroke-teal { stroke: var(--primary); fill: none; }
+    .svg-stroke-green { stroke: var(--tertiary); fill: none; }
+    .svg-stroke-amber { stroke: var(--warning); fill: none; }
+    .svg-stroke-indigo { stroke: var(--data-4); fill: none; }
+    .svg-stroke-outline { stroke: var(--outline); fill: none; }
+    .svg-stroke-ink { stroke: var(--on-surface); fill: none; }
+    .svg-text-head {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      fill: var(--on-surface);
+    }
+    .svg-text-label {
+      font-family: var(--font-label);
+      font-weight: 600;
+      fill: var(--on-primary-container);
+    }
+    .svg-text-body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      fill: var(--on-surface-variant);
+    }
+    .svg-text-green {
+      font-family: var(--font-label);
+      font-weight: 700;
+      fill: var(--secondary);
+    }
+    .svg-text-white {
+      font-family: var(--font-label);
+      font-weight: 700;
+      fill: var(--on-primary);
+    }
+
+    /* Topic Grid & Cards */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    .topic-card {
+      background: var(--background);
+      border: var(--card-border);
+      border-left: var(--status-bar-width) solid var(--primary);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+      transition: border-left-color var(--dur-short) var(--ease-out),
+                  box-shadow var(--dur-short) var(--ease-out);
+    }
+
+    .topic-card[data-reviewed="true"] {
+      border-left-color: var(--tertiary);
+    }
+
+    .topic-card.is-highlighted {
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 28%, transparent);
+    }
+
+    .topic-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .topic-letter {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--on-primary-container);
+      background: var(--primary-container);
+      padding: 2px var(--space-sm);
+      border-radius: var(--rounded);
+      display: inline-block;
+      margin-bottom: var(--space-xs);
+    }
+
+    .topic-heading {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      line-height: 1.2;
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .topic-points {
+      margin: 0;
+      padding-left: 1.25rem;
+      display: grid;
+      gap: var(--space-sm);
+      color: var(--on-surface);
+      max-width: 65ch;
+    }
+
+    .topic-points li::marker {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .callout-note {
+      background: var(--primary-container);
+      border-left: var(--status-bar-width) solid var(--primary);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      color: var(--on-primary-container);
+      font-size: 0.9375rem;
+    }
+    .callout-note strong {
+      color: var(--on-surface);
+    }
+
+    .topic-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-top: var(--card-border);
+      padding-top: var(--space-sm);
+    }
+
+    .review-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      min-height: 40px;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded);
+      border: 1px solid var(--outline);
+      background: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out);
+    }
+    .review-toggle:hover {
+      background-color: var(--surface-container-low);
+    }
+    .review-toggle[aria-pressed="true"] {
+      background-color: color-mix(in srgb, var(--tertiary) 14%, var(--background));
+      border-color: var(--tertiary);
+      color: var(--secondary);
+    }
+
+    /* Comparison Table (Gêmeos) */
+    .table-wrap {
+      background: var(--background);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      overflow-x: auto;
+    }
+
+    .vitals-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9375rem;
+    }
+
+    .vitals-table th,
+    .vitals-table td {
+      padding: var(--space-md) var(--space-lg);
+      border-bottom: 1px solid var(--outline-variant);
+      vertical-align: top;
+    }
+
+    .vitals-table thead th {
+      background: var(--surface-container-low);
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: var(--label-size);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--on-surface-variant);
+    }
+
+    .vitals-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .vitals-table td:first-child {
+      font-weight: 700;
+      color: var(--on-surface);
+      white-space: nowrap;
+    }
+
+    /* QUIZ SECTION */
+    .quiz-shell {
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    .quiz-nav-panel {
+      background: var(--background);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .quiz-nav-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .question-dots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .q-dot {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 var(--space-sm);
+      border-radius: var(--rounded);
+      border: 1px solid var(--outline-variant);
+      background: var(--background);
+      color: var(--on-surface-variant);
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: 0.875rem;
+      font-variant-numeric: tabular-nums;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out);
+    }
+    .q-dot:hover {
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+    }
+    .q-dot[data-current="true"] {
+      box-shadow: 0 0 0 2px var(--primary);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .q-dot[data-state="correct"] {
+      background: color-mix(in srgb, var(--tertiary) 14%, var(--background));
+      border-color: var(--tertiary);
+      color: var(--secondary);
+    }
+    .q-dot[data-state="wrong"] {
+      background: color-mix(in srgb, var(--error) 10%, var(--background));
+      border-color: var(--error);
+      color: var(--error);
+    }
+
+    /* Question Card */
+    .question-card {
+      background: var(--background);
+      border: var(--card-border);
+      border-left: var(--status-bar-width) solid var(--primary);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      display: grid;
+      gap: var(--space-lg);
+      animation: fadeSlide var(--dur-short) var(--ease-out);
+    }
+    .question-card[data-result="correct"] { border-left-color: var(--tertiary); }
+    .question-card[data-result="wrong"] { border-left-color: var(--error); }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .question-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .question-stem {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
+      line-height: 1.35;
+      color: var(--on-surface);
+      margin: 0;
+      max-width: 65ch;
+    }
+
+    .options-list {
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .option-btn {
+      width: 100%;
+      min-height: 52px;
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--rounded);
+      border: 1px solid var(--outline-variant);
+      background: var(--background);
+      color: var(--on-surface);
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      font-size: var(--body-size);
+      line-height: 1.5;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out),
+                  box-shadow var(--dur-micro) var(--ease-out);
+    }
+    .option-btn:hover:not(:disabled) {
+      background-color: var(--surface-container-low);
+      border-color: var(--primary);
+    }
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    .option-letter {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--on-surface);
+    }
+
+    .option-btn[data-choice-state="correct"] {
+      background-color: color-mix(in srgb, var(--tertiary) 12%, var(--background));
+      border-color: var(--tertiary);
+      box-shadow: inset 0 0 0 1px var(--tertiary);
+    }
+    .option-btn[data-choice-state="correct"] .option-letter {
+      background-color: var(--tertiary);
+      border-color: var(--tertiary);
+      color: var(--on-primary);
+    }
+
+    .option-btn[data-choice-state="wrong"] {
+      background-color: color-mix(in srgb, var(--error) 8%, var(--background));
+      border-color: var(--error);
+      box-shadow: inset 0 0 0 1px var(--error);
+    }
+    .option-btn[data-choice-state="wrong"] .option-letter {
+      background-color: var(--error);
+      border-color: var(--error);
+      color: var(--on-error);
+    }
+
+    .option-btn[data-choice-state="dimmed"] {
+      opacity: 0.65;
+    }
+
+    /* Feedback Panel */
+    .feedback-box {
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      border-left: var(--status-bar-width) solid var(--primary);
+      display: grid;
+      gap: var(--space-sm);
+    }
+    .feedback-box[data-status="ok"] {
+      background: color-mix(in srgb, var(--tertiary) 10%, var(--background));
+      border-left-color: var(--tertiary);
+    }
+    .feedback-box[data-status="alert"] {
+      background: color-mix(in srgb, var(--error) 8%, var(--background));
+      border-left-color: var(--error);
+    }
+
+    .feedback-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .feedback-box[data-status="ok"] .feedback-title { color: var(--secondary); }
+    .feedback-box[data-status="alert"] .feedback-title { color: var(--error); }
+
+    .feedback-text {
+      margin: 0;
+      color: var(--on-surface);
+      max-width: 65ch;
+    }
+
+    .question-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      border-top: var(--card-border);
+      padding-top: var(--space-md);
+    }
+
+    /* Final Results Card */
+    .results-card {
+      background: var(--background);
+      border: var(--card-border);
+      border-left: var(--status-bar-width) solid var(--tertiary);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      display: grid;
+      gap: var(--space-lg);
+      box-shadow: var(--card-lift);
+    }
+    .results-card[data-status="warn"] { border-left-color: var(--warning); }
+    .results-card[data-status="alert"] { border-left-color: var(--error); }
+
+    .results-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .score-big {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: clamp(2rem, 1.5rem + 1.5vw, 2.75rem);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.05;
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .domain-breakdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+
+    .domain-stat {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .meter-track {
+      height: 8px;
+      border-radius: var(--rounded-full);
+      background: var(--outline-variant);
+      overflow: hidden;
+    }
+    .meter-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: var(--rounded-full);
+      transition: width var(--dur-long) var(--ease-out);
+    }
+    .meter-fill[data-good="true"] { background: var(--tertiary); }
+
+    /* Footer */
+    .page-footer {
+      border-top: var(--card-border);
+      padding-top: var(--space-md);
+      color: var(--on-surface-variant);
+      font-size: 0.875rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .inline-confirm-msg {
+      font-size: 0.875rem;
+      color: var(--on-primary-container);
+      font-weight: 600;
+    }
+
+    /* Tab Panel visibility */
+    .tab-panel[hidden] { display: none; }
+
+    /* Mobile breakpoint */
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-md);
+        gap: var(--space-md);
+      }
+      .hero-header,
+      .question-card,
+      .results-card,
+      .topic-card,
+      .schematic-card {
+        padding: var(--space-md);
+      }
+      .vitals-table th,
+      .vitals-table td {
+        padding: var(--space-sm) var(--space-md);
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <main class="page-grid">
+
+      <!-- HEADER & TABS -->
+      <header class="hero-header">
+        <div>
+          <p class="kicker">Ciências · 8º Ano do Ensino Fundamental</p>
+          <h1 class="title">Gestação, Amamentação e Formação de Gêmeos</h1>
+          <p class="lede">Guia objetivo de revisão para a prova, com os tópicos essenciais das aulas e um simulado de 10 questões comentadas com correção na hora.</p>
+        </div>
+
+        <div class="nav-row">
+          <div class="tabs-bar" role="tablist" aria-label="Seções de estudo">
+            <button
+              type="button"
+              class="tab-btn"
+              id="tab-resumo"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-resumo"
+              onclick="switchTab('resumo')">
+              <i data-lucide="book-open" aria-hidden="true" width="18" height="18"></i>
+              <span>Resumo Objetivo</span>
+              <span class="tab-badge">8 tópicos</span>
+            </button>
+            <button
+              type="button"
+              class="tab-btn"
+              id="tab-quiz"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-quiz"
+              onclick="switchTab('quiz')">
+              <i data-lucide="check-square" aria-hidden="true" width="18" height="18"></i>
+              <span>Quiz da Prova</span>
+              <span class="tab-badge" id="badge-quiz-count">0/10</span>
+            </button>
+          </div>
+          <span class="chip" data-status="info" id="study-status-chip">Pronto para revisar</span>
+        </div>
+      </header>
+
+      <!-- KPI PROGRESS STRIP -->
+      <section class="kpi-grid" aria-label="Progresso de estudo">
+        <div class="status-card" id="kpi-card-resumo" data-status="info">
+          <p class="kpi-label">Tópicos revisados</p>
+          <p class="kpi-value" id="kpi-resumo-val">0 de 8</p>
+          <p class="kpi-caption" id="kpi-resumo-cap">Marque cada tópico ao concluir a leitura</p>
+        </div>
+
+        <div class="status-card" id="kpi-card-quiz" data-status="info">
+          <p class="kpi-label">Questões respondidas</p>
+          <p class="kpi-value" id="kpi-quiz-val">0 de 10</p>
+          <p class="kpi-caption" id="kpi-quiz-cap">Alternativas com feedback imediato</p>
+        </div>
+
+        <div class="status-card" id="kpi-card-score" data-status="info">
+          <p class="kpi-label">Aproveitamento no Quiz</p>
+          <p class="kpi-value" id="kpi-score-val">—</p>
+          <p class="kpi-caption" id="kpi-score-cap">Responda às questões para acompanhar</p>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ABA 1: RESUMO OBJETIVO
+           ========================================================= -->
+      <section id="panel-resumo" class="tab-panel summary-flow" role="tabpanel" aria-labelledby="tab-resumo">
+
+        <div class="toolbar">
+          <div class="filter-group" role="group" aria-label="Filtrar blocos do resumo">
+            <button type="button" class="filter-pill" aria-pressed="true" data-filter="all" onclick="filterSummary('all')">Todos (8)</button>
+            <button type="button" class="filter-pill" aria-pressed="false" data-filter="gestacao" onclick="filterSummary('gestacao')">Gestação e Pré-natal (3)</button>
+            <button type="button" class="filter-pill" aria-pressed="false" data-filter="amamentacao" onclick="filterSummary('amamentacao')">Amamentação (3)</button>
+            <button type="button" class="filter-pill" aria-pressed="false" data-filter="gemeos" onclick="filterSummary('gemeos')">Gêmeos (2)</button>
+          </div>
+          <div class="filter-group">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="markAllReviewed()">
+              <i data-lucide="check-check" aria-hidden="true" width="16" height="16"></i>
+              <span>Marcar todos</span>
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="switchTab('quiz')">
+              <span>Ir para o Quiz</span>
+              <i data-lucide="arrow-right" aria-hidden="true" width="16" height="16"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- BLOCO 1: GESTAÇÃO E PRÉ-NATAL -->
+        <article class="module-block" data-block="gestacao">
+          <div class="module-header">
+            <div>
+              <h2 class="section-title">1. Gestação, Proteção Fetal e Pré-natal</h2>
+              <p class="module-subtitle">Estruturas de nutrição e proteção do embrião/feto e cuidados essenciais no início da gravidez.</p>
+            </div>
+            <span class="chip" data-status="info">Tópicos A, B e C</span>
+          </div>
+
+          <!-- Esquema SVG: Placenta, Cordão e Bolsa Amniótica -->
+          <div class="schematic-card">
+            <h3 class="schematic-title">Esquema de trocas materno-fetais e proteção no útero</h3>
+            <div class="svg-frame">
+              <svg viewBox="0 0 760 270" role="img" aria-label="Diagrama esquemático mostrando a placenta aderida à parede do útero, o cordão umbilical ligando a placenta ao feto e a bolsa com líquido amniótico ao redor do feto.">
+                <!-- Parede uterina e bolsa -->
+                <rect x="20" y="20" width="720" height="230" rx="18" class="svg-bg-white svg-stroke-outline" stroke-width="1.5"/>
+                <!-- Região Materna / Placenta -->
+                <rect x="44" y="42" width="190" height="186" rx="14" class="svg-bg-teal-tint svg-stroke-teal" stroke-width="2"/>
+                <text x="139" y="72" text-anchor="middle" class="svg-text-head" font-size="15">Placenta</text>
+                <text x="139" y="92" text-anchor="middle" class="svg-text-label" font-size="12">(Órgão materno-fetal)</text>
+                <rect x="60" y="110" width="158" height="44" rx="8" class="svg-bg-white svg-stroke-teal" stroke-width="1.2"/>
+                <text x="139" y="129" text-anchor="middle" class="svg-text-green" font-size="12">Nutrientes + O₂ + Anticorpos</text>
+                <text x="139" y="145" text-anchor="middle" class="svg-text-body" font-size="11">→ passam da mãe para o feto</text>
+                <rect x="60" y="164" width="158" height="44" rx="8" class="svg-bg-white svg-stroke-amber" stroke-width="1.2"/>
+                <text x="139" y="183" text-anchor="middle" class="svg-text-head" font-size="12">Resíduos + CO₂</text>
+                <text x="139" y="199" text-anchor="middle" class="svg-text-body" font-size="11">← retornam para eliminação</text>
+
+                <!-- Cordão Umbilical -->
+                <path d="M 234 118 C 290 118, 305 148, 370 148" class="svg-stroke-teal" stroke-width="10" stroke-linecap="round"/>
+                <path d="M 234 118 C 290 118, 305 148, 370 148" class="svg-stroke-amber" stroke-width="3" stroke-dasharray="5 5" stroke-linecap="round"/>
+                <rect x="248" y="64" width="128" height="40" rx="8" class="svg-bg-wash svg-stroke-outline" stroke-width="1"/>
+                <text x="312" y="81" text-anchor="middle" class="svg-text-head" font-size="12">Cordão umbilical</text>
+                <text x="312" y="96" text-anchor="middle" class="svg-text-body" font-size="11">Vasos sem nervos (indolor)</text>
+
+                <!-- Bolsa e Líquido Amniótico -->
+                <rect x="370" y="42" width="346" height="186" rx="28" class="svg-bg-green-tint svg-stroke-green" stroke-width="2"/>
+                <text x="543" y="70" text-anchor="middle" class="svg-text-head" font-size="15">Bolsa Amniótica e Líquido Amniótico</text>
+                <ellipse cx="543" cy="146" rx="110" ry="52" class="svg-bg-white svg-stroke-green" stroke-width="1.5"/>
+                <circle cx="515" cy="142" r="22" class="svg-bg-teal-tint svg-stroke-teal" stroke-width="1.5"/>
+                <ellipse cx="566" cy="146" rx="34" ry="22" class="svg-bg-teal-tint svg-stroke-teal" stroke-width="1.5"/>
+                <text x="543" y="182" text-anchor="middle" class="svg-text-green" font-size="12">Embrião / Feto protegido no líquido</text>
+                <text x="543" y="216" text-anchor="middle" class="svg-text-body" font-size="12">Amortece choques mecânicos · Mantém temperatura estável</text>
+              </svg>
+            </div>
+            <p class="schematic-caption">A placenta conecta o organismo materno ao feto por meio do cordão umbilical, enquanto a bolsa amniótica preenche o espaço ao redor do feto com líquido protetor.</p>
+          </div>
+
+          <div class="topic-grid">
+            <!-- Tópico a -->
+            <section class="topic-card" id="topic-a" data-topic-id="a" data-reviewed="false">
+              <div class="topic-top">
+                <div>
+                  <span class="topic-letter">Tópico A</span>
+                  <h3 class="topic-heading">Placenta e Trocas Materno-Fetais</h3>
+                </div>
+                <span class="chip" data-status="neutral" id="chip-topic-a">Pendente</span>
+              </div>
+              <ul class="topic-points">
+                <li><strong>Órgão materno-fetal:</strong> forma-se quando o embrião se fixa no útero, reunindo tecidos da mãe e do embrião.</li>
+                <li><strong>Trocas vitais:</strong> realiza a passagem de <strong>nutrientes</strong>, <strong>gás oxigênio (O₂)</strong> e <strong>anticorpos</strong> da mãe para o feto, além de remover <strong>resíduos metabólicos</strong> e gás carbônico (CO₂).</li>
+                <li><strong>Cordão umbilical:</strong> liga a placenta ao feto; possui vasos sanguíneos envoltos por substância gelatinosa que evita dobras. Como <strong>não tem terminações nervosas</strong>, seu corte no parto não causa dor.</li>
+                <li><strong>Papel hormonal:</strong> produz o hormônio <em>hCG</em> no início da gestação (detectado nos testes de gravidez) e assume a produção hormonal após 12 semanas.</li>
+              </ul>
+              <div class="topic-footer">
+                <span class="chip" data-status="info">Cai na Questão 01</span>
+                <button type="button" class="review-toggle" aria-pressed="false" onclick="toggleTopicReviewed('a')">
+                  <i data-lucide="check" aria-hidden="true" width="16" height="16"></i>
+                  <span>Marcar como revisado</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- Tópico b -->
+            <section class="topic-card" id="topic-b" data-topic-id="b" data-reviewed="false">
+              <div class="topic-top">
+                <div>
+                  <span class="topic-letter">Tópico B</span>
+                  <h3 class="topic-heading">Bolsa Amniótica e Líquido Amniótico</h3>
+                </div>
+                <span class="chip" data-status="neutral" id="chip-topic-b">Pendente</span>
+              </div>
+              <ul class="topic-points">
+                <li><strong>Bolsa amniótica:</strong> membrana que envolve o embrião e o feto durante toda a gestação, contendo o líquido amniótico.</li>
+                <li><strong>Proteção mecânica:</strong> o líquido amniótico <strong>amortece choques mecânicos</strong> (impactos externos), protegendo o bebê em desenvolvimento.</li>
+                <li><strong>Estabilidade do ambiente:</strong> ajuda a <strong>manter a temperatura estável</strong> para o feto e evita a desidratação dos tecidos.</li>
+                <li><strong>No parto:</strong> durante o trabalho de parto, ocorre o rompimento da bolsa, liberando o líquido amniótico.</li>
+              </ul>
+              <div class="topic-footer">
+                <span class="chip" data-status="info">Cai na Questão 02</span>
+                <button type="button" class="review-toggle" aria-pressed="false" onclick="toggleTopicReviewed('b')">
+                  <i data-lucide="check" aria-hidden="true" width="16" height="16"></i>
+                  <span>Marcar como revisado</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- Tópico c -->
+            <section class="topic-card" id="topic-c" data-topic-id="c" data-reviewed="false">
+              <div class="topic-top">
+                <div>
+                  <span class="topic-letter">Tópico C</span>
+                  <h3 class="topic-heading">Pré-natal e Ácido Fólico (Vitamina B9)</h3>
+                </div>
+                <span class="chip" data-status="neutral" id="chip-topic-c">Pendente</span>
+              </div>
+              <ul class="topic-points">
+                <li><strong>Acompanhamento pré-natal:</strong> consultas e exames regulares para monitorar o crescimento fetal, cuidar da saúde da gestante e prevenir complicações.</li>
+                <li><strong>Ácido fólico (Vitamina B9):</strong> vitamina essencial recomendada no início da gestação (e no planejamento da gravidez).</li>
+                <li><strong>Função principal:</strong> participa da formação do sistema nervoso inicial e <strong>previne malformações no tubo neural</strong> — estrutura do embrião que origina o <strong>cérebro e a medula espinhal</strong>.</li>
+              </ul>
+              <div class="callout-note">
+                <strong>Cuidados complementares:</strong> alimentação equilibrada, atividades físicas leves com orientação e evitar substâncias tóxicas como álcool e cigarro.
+              </div>
+              <div class="topic-footer">
+                <span class="chip" data-status="info">Cai na Questão 03</span>
+                <button type="button" class="review-toggle" aria-pressed="false" onclick="toggleTopicReviewed('c')">
+                  <i data-lucide="check" aria-hidden="true" width="16" height="16"></i>
+                  <span>Marcar como revisado</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <!-- BLOCO 2: AMAMENTAÇÃO E HORMÔNIOS -->
+        <article class="module-block" data-block="amamentacao">
+          <div class="module-header">
+            <div>
+              <h2 class="section-title">2. Amamentação, Colostro e Hormônios</h2>
+              <p class="module-subtitle">Recomendações da OMS, composição do primeiro leite, benefícios para mãe e bebê e controle hormonal.</p>
+            </div>
+            <span class="chip" data-status="info">Tópicos D, E e F</span>
+          </div>
+
+          <!-- Esquema SVG: Hormônios da Amamentação -->
+          <div class="schematic-card">
+            <h3 class="schematic-title">Como a sucção do bebê comanda a produção e a saída do leite</h3>
+            <div class="svg-frame">
+              <svg viewBox="0 0 760 220" role="img" aria-label="Fluxograma hormonal da amamentação: a sucção do bebê estimula a hipófise, que libera prolactina para produzir o leite e ocitocina para ejetar o leite.">
+                <rect x="20" y="20" width="180" height="180" rx="12" class="svg-bg-white svg-stroke-teal" stroke-width="2"/>
+                <text x="110" y="68" text-anchor="middle" class="svg-text-head" font-size="15">1. Estímulo</text>
+                <text x="110" y="96" text-anchor="middle" class="svg-text-label" font-size="13">Sucção do bebê</text>
+                <text x="110" y="120" text-anchor="middle" class="svg-text-body" font-size="12">Envia sinais nervosos</text>
+                <text x="110" y="138" text-anchor="middle" class="svg-text-body" font-size="12">para a hipófise no</text>
+                <text x="110" y="156" text-anchor="middle" class="svg-text-body" font-size="12">encéfalo da mãe</text>
+
+                <line x1="200" y1="110" x2="245" y2="110" class="svg-stroke-teal" stroke-width="2.5"/>
+                <polygon points="245,104 257,110 245,116" class="svg-fill-teal"/>
+
+                <rect x="257" y="45" width="160" height="130" rx="12" class="svg-bg-teal-tint svg-stroke-teal" stroke-width="2"/>
+                <text x="337" y="88" text-anchor="middle" class="svg-text-head" font-size="15">2. Hipófise</text>
+                <text x="337" y="112" text-anchor="middle" class="svg-text-body" font-size="12">Glândula coordena</text>
+                <text x="337" y="130" text-anchor="middle" class="svg-text-body" font-size="12">dois hormônios</text>
+                <text x="337" y="148" text-anchor="middle" class="svg-text-label" font-size="12">fundamentais</text>
+
+                <!-- Seta superior: Prolactina -->
+                <path d="M 417 80 L 468 58" class="svg-stroke-teal" stroke-width="2.5"/>
+                <polygon points="464,53 477,54 469,64" class="svg-fill-teal"/>
+                <rect x="477" y="20" width="263" height="80" rx="12" class="svg-bg-white svg-stroke-teal" stroke-width="2"/>
+                <text x="608" y="48" text-anchor="middle" class="svg-text-head" font-size="15">Prolactina → Produção</text>
+                <text x="608" y="70" text-anchor="middle" class="svg-text-body" font-size="12">Estimula as glândulas mamárias a</text>
+                <text x="608" y="87" text-anchor="middle" class="svg-text-body" font-size="12">produzir o leite materno</text>
+
+                <!-- Seta inferior: Ocitocina -->
+                <path d="M 417 140 L 468 162" class="svg-stroke-green" stroke-width="2.5"/>
+                <polygon points="469,156 477,166 464,167" class="svg-fill-green"/>
+                <rect x="477" y="120" width="263" height="80" rx="12" class="svg-bg-green-tint svg-stroke-green" stroke-width="2"/>
+                <text x="608" y="148" text-anchor="middle" class="svg-text-green" font-size="15">Ocitocina → Ejeção (saída)</text>
+                <text x="608" y="170" text-anchor="middle" class="svg-text-body" font-size="12">Promove a contração e saída do leite</text>
+                <text x="608" y="187" text-anchor="middle" class="svg-text-body" font-size="12">(também atua nas contrações do parto)</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="topic-grid">
+            <!-- Tópico d -->
+            <section class="topic-card" id="topic-d" data-topic-id="d" data-reviewed="false">
+              <div class="topic-top">
+                <div>
+                  <span class="topic-letter">Tópico D</span>
+                  <h3 class="topic-heading">Aleitamento Materno Exclusivo</h3>
+                </div>
+                <span class="chip" data-status="neutral" id="chip-topic-d">Pendente</span>
+              </div>
+              <ul class="topic-points">
+                <li><strong>Regra da OMS:</strong> a amamentação deve ser <strong>exclusiva até os 6 meses</strong> de idade.</li>
+                <li><strong>O que é exclusivo:</strong> o bebê recebe <strong>apenas leite materno</strong>, sem água, chás, sucos ou outros alimentos.</li>
+                <li><strong>Vantagens para o bebê (Aula 13):</strong> é digerido facilmente, provoca menor reação alérgica ou prisão de ventre e contém anticorpos que defendem contra infecções.</li>
+                <li><strong>Benefícios para a mãe (Aula 13):</strong> ajuda o útero a voltar ao tamanho normal mais rápido, evita hemorragias pós-parto e reduz o risco de câncer de mama.</li>
+              </ul>
+              <div class="topic-footer">
+                <span class="chip" data-status="info">Cai na Questão 04</span>
+                <button type="button" class="review-toggle" aria-pressed="false" onclick="toggleTopicReviewed('d')">
+                  <i data-lucide="check" aria-hidden="true" width="16" height="16"></i>
+                  <span>Marcar como revisado</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- Tópico e -->
+            <section class="topic-card" id="topic-e" data-topic-id="e" data-reviewed="false">
+              <div class="topic-top">
+                <div>
+                  <span class="topic-letter">Tópico E</span>
+                  <h3 class="topic-heading">Colostro ("Primeira Vacina")</h3>
+                </div>
+                <span class="chip" data-status="neutral" id="chip-topic-e">Pendente</span>
+              </div>
+              <ul class="topic-points">
+                <li><strong>O que é:</strong> é o <strong>primeiro leite</strong> secretado pela mãe nos primeiros dias após o parto.</li>
+                <li><strong>Aspecto:</strong> líquido de cor <strong>amarelada e consistência espessa</strong>, produzido em pequena quantidade, porém ideal para o estômago do recém-nascido.</li>
+                <li><strong>Importância imunológica:</strong> é muito <strong>rico em anticorpos e proteínas</strong>, protegendo o bebê contra bactérias e vírus — por isso é conhecido como a <strong>"primeira vacina"</strong>.</li>
+              </ul>
+              <div class="topic-footer">
+                <span class="chip" data-status="info">Cai na Questão 05</span>
+                <button type="button" class="review-toggle" aria-pressed="false" onclick="toggleTopicReviewed('e')">
+                  <i data-lucide="check" aria-hidden="true" width="16" height="16"></i>
+                  <span>Marcar como revisado</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- Tópico f -->
+            <section class="topic-card" id="topic-f" data-topic-id="f" data-reviewed="false">
+              <div class="topic-top">
+                <div>
+                  <span class="topic-letter">Tópico F</span>
+                  <h3 class="topic-heading">Hormônios da Amamentação</h3>
+                </div>
+                <span class="chip" data-status="neutral" id="chip-topic-f">Pendente</span>
+              </div>
+              <ul class="topic-points">
+                <li><strong>Prolactina (Produção):</strong> hormônio produzido pela hipófise que estimula as glândulas mamárias a <strong>produzir o leite</strong>.</li>
+                <li><strong>Ocitocina / Oxitocina (Ejeção):</strong> hormônio liberado pela hipófise em resposta à sucção do bebê; promove a <strong>saída (ejeção) do leite</strong> pelos ductos mamários.</li>
+                <li><strong>Dica para não confundir:</strong> <strong>Pro</strong>lactina = <strong>Pro</strong>dução; <strong>O</strong>citocina = <strong>O</strong>rganiza a saída/ejeção (e também estimula as contrações uterinas no parto).</li>
+              </ul>
+              <div class="topic-footer">
+                <span class="chip" data-status="info">Cai na Questão 06</span>
+                <button type="button" class="review-toggle" aria-pressed="false" onclick="toggleTopicReviewed('f')">
+                  <i data-lucide="check" aria-hidden="true" width="16" height="16"></i>
+                  <span>Marcar como revisado</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <!-- BLOCO 3: FORMAÇÃO DE GÊMEOS -->
+        <article class="module-block" data-block="gemeos">
+          <div class="module-header">
+            <div>
+              <h2 class="section-title">3. Formação de Gêmeos</h2>
+              <p class="module-subtitle">Diferenças na fecundação, divisão embrionária, material genético (DNA) e sexo biológico.</p>
+            </div>
+            <span class="chip" data-status="info">Tópicos G e H</span>
+          </div>
+
+          <!-- Esquema SVG: Univitelinos vs Bivitelinos -->
+          <div class="schematic-card">
+            <h3 class="schematic-title">Comparação visual: Gêmeos Univitelinos vs. Gêmeos Bivitelinos</h3>
+            <div class="svg-frame">
+              <svg viewBox="0 0 760 250" role="img" aria-label="Comparação entre gêmeos univitelinos, formados por 1 óvulo e 1 espermatozoide cujo zigoto se divide em dois embriões, e gêmeos bivitelinos, formados por 2 óvulos fecundados por 2 espermatozoides diferentes.">
+                <!-- Lado Esquerdo: Univitelinos -->
+                <rect x="20" y="18" width="346" height="214" rx="14" class="svg-bg-white svg-stroke-teal" stroke-width="2"/>
+                <text x="193" y="46" text-anchor="middle" class="svg-text-head" font-size="15">Gêmeos Univitelinos (Idênticos)</text>
+                <circle cx="80" cy="112" r="24" class="svg-bg-teal-tint svg-stroke-teal" stroke-width="2"/>
+                <text x="80" y="116" text-anchor="middle" class="svg-text-label" font-size="11">1 Óvulo</text>
+                <text x="118" y="116" text-anchor="middle" class="svg-text-head" font-size="14">+</text>
+                <circle cx="156" cy="112" r="24" class="svg-bg-teal-tint svg-stroke-teal" stroke-width="2"/>
+                <text x="156" y="116" text-anchor="middle" class="svg-text-label" font-size="10">1 Esperm.</text>
+
+                <line x1="184" y1="112" x2="210" y2="112" class="svg-stroke-teal" stroke-width="2"/>
+                <polygon points="210,107 220,112 210,117" class="svg-fill-teal"/>
+
+                <circle cx="246" cy="112" r="22" class="svg-fill-teal"/>
+                <text x="246" y="116" text-anchor="middle" class="svg-text-white" font-size="11">1 Zigoto</text>
+
+                <path d="M 272 104 L 302 84" class="svg-stroke-teal" stroke-width="2"/>
+                <path d="M 272 120 L 302 140" class="svg-stroke-teal" stroke-width="2"/>
+                <circle cx="326" cy="78" r="20" class="svg-bg-green-tint svg-stroke-green" stroke-width="2"/>
+                <text x="326" y="82" text-anchor="middle" class="svg-text-green" font-size="10">Emb. A</text>
+                <circle cx="326" cy="146" r="20" class="svg-bg-green-tint svg-stroke-green" stroke-width="2"/>
+                <text x="326" y="150" text-anchor="middle" class="svg-text-green" font-size="10">Emb. B</text>
+
+                <text x="193" y="196" text-anchor="middle" class="svg-text-green" font-size="12">Mesmo DNA (~100%) · Mesmo sexo biológico</text>
+                <text x="193" y="214" text-anchor="middle" class="svg-text-body" font-size="11">Um único zigoto se divide em dois embriões</text>
+
+                <!-- Lado Direito: Bivitelinos -->
+                <rect x="394" y="18" width="346" height="214" rx="14" class="svg-bg-white svg-stroke-indigo" stroke-width="2"/>
+                <text x="567" y="46" text-anchor="middle" class="svg-text-head" font-size="15">Gêmeos Bivitelinos (Fraternos)</text>
+
+                <!-- Par 1 -->
+                <circle cx="446" cy="84" r="20" class="svg-bg-amber-tint svg-stroke-amber" stroke-width="1.8"/>
+                <text x="446" y="88" text-anchor="middle" class="svg-text-head" font-size="10">Óvulo 1</text>
+                <text x="478" y="88" text-anchor="middle" class="svg-text-head" font-size="13">+</text>
+                <circle cx="512" cy="84" r="20" class="svg-bg-amber-tint svg-stroke-amber" stroke-width="1.8"/>
+                <text x="512" y="88" text-anchor="middle" class="svg-text-head" font-size="10">Esp. 1</text>
+                <line x1="536" y1="84" x2="572" y2="84" class="svg-stroke-indigo" stroke-width="2"/>
+                <polygon points="572,79 582,84 572,89" class="svg-fill-indigo"/>
+                <circle cx="614" cy="84" r="20" class="svg-bg-wash svg-stroke-indigo" stroke-width="2"/>
+                <text x="614" y="88" text-anchor="middle" class="svg-text-head" font-size="10">Zigoto 1</text>
+                <text x="684" y="88" text-anchor="middle" class="svg-text-body" font-size="11">Emb. 1</text>
+
+                <!-- Par 2 -->
+                <circle cx="446" cy="142" r="20" class="svg-bg-teal-tint svg-stroke-teal" stroke-width="1.8"/>
+                <text x="446" y="146" text-anchor="middle" class="svg-text-label" font-size="10">Óvulo 2</text>
+                <text x="478" y="146" text-anchor="middle" class="svg-text-head" font-size="13">+</text>
+                <circle cx="512" cy="142" r="20" class="svg-bg-teal-tint svg-stroke-teal" stroke-width="1.8"/>
+                <text x="512" y="146" text-anchor="middle" class="svg-text-label" font-size="10">Esp. 2</text>
+                <line x1="536" y1="142" x2="572" y2="142" class="svg-stroke-indigo" stroke-width="2"/>
+                <polygon points="572,137 582,142 572,147" class="svg-fill-indigo"/>
+                <circle cx="614" cy="142" r="20" class="svg-bg-wash svg-stroke-indigo" stroke-width="2"/>
+                <text x="614" y="146" text-anchor="middle" class="svg-text-head" font-size="10">Zigoto 2</text>
+                <text x="684" y="146" text-anchor="middle" class="svg-text-body" font-size="11">Emb. 2</text>
+
+                <text x="567" y="196" text-anchor="middle" class="svg-text-head" font-size="12">DNAs diferentes · Sexos iguais ou diferentes</text>
+                <text x="567" y="214" text-anchor="middle" class="svg-text-body" font-size="11">Casal (menino e menina) é sempre bivitelino</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="topic-grid">
+            <!-- Tópico g -->
+            <section class="topic-card" id="topic-g" data-topic-id="g" data-reviewed="false">
+              <div class="topic-top">
+                <div>
+                  <span class="topic-letter">Tópico G</span>
+                  <h3 class="topic-heading">Gêmeos Univitelinos (Monozigóticos / Idênticos)</h3>
+                </div>
+                <span class="chip" data-status="neutral" id="chip-topic-g">Pendente</span>
+              </div>
+              <ul class="topic-points">
+                <li><strong>Formação:</strong> <strong>1 único óvulo</strong> é fecundado por <strong>1 espermatozoide</strong>, formando um único zigoto que, nas primeiras divisões, separa-se em dois embriões.</li>
+                <li><strong>Material genético:</strong> compartilham praticamente <strong>100% do mesmo DNA</strong>, sendo fisicamente muito parecidos.</li>
+                <li><strong>Sexo biológico:</strong> possuem <strong>obrigatoriamente o mesmo sexo</strong> (ou ambos são meninos, ou ambas são meninas).</li>
+              </ul>
+              <div class="topic-footer">
+                <span class="chip" data-status="info">Caem nas Questões 07 e 08</span>
+                <button type="button" class="review-toggle" aria-pressed="false" onclick="toggleTopicReviewed('g')">
+                  <i data-lucide="check" aria-hidden="true" width="16" height="16"></i>
+                  <span>Marcar como revisado</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- Tópico h -->
+            <section class="topic-card" id="topic-h" data-topic-id="h" data-reviewed="false">
+              <div class="topic-top">
+                <div>
+                  <span class="topic-letter">Tópico H</span>
+                  <h3 class="topic-heading">Gêmeos Bivitelinos (Dizigóticos / Fraternos)</h3>
+                </div>
+                <span class="chip" data-status="neutral" id="chip-topic-h">Pendente</span>
+              </div>
+              <ul class="topic-points">
+                <li><strong>Formação:</strong> <strong>2 óvulos distintos</strong> são liberados e fecundados por <strong>2 espermatozoides diferentes</strong>, gerando dois zigotos independentes.</li>
+                <li><strong>Material genético:</strong> têm <strong>DNAs diferentes</strong> — a semelhança genética entre eles é a mesma de irmãos nascidos em gestações separadas.</li>
+                <li><strong>Sexo biológico:</strong> podem ter sexos iguais ou diferentes. Portanto, um <strong>casal de gêmeos (menino e menina) é obrigatoriamente bivitelino (dizigótico)</strong>.</li>
+              </ul>
+              <div class="topic-footer">
+                <span class="chip" data-status="info">Caem nas Questões 09 e 10</span>
+                <button type="button" class="review-toggle" aria-pressed="false" onclick="toggleTopicReviewed('h')">
+                  <i data-lucide="check" aria-hidden="true" width="16" height="16"></i>
+                  <span>Marcar como revisado</span>
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <!-- Tabela Comparativa -->
+          <div class="table-wrap">
+            <table class="vitals-table" aria-label="Quadro comparativo entre gêmeos univitelinos e bivitelinos">
+              <thead>
+                <tr>
+                  <th>Característica</th>
+                  <th>Gêmeos Univitelinos (Monozigóticos)</th>
+                  <th>Gêmeos Bivitelinos (Dizigóticos)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Gametas envolvidos</td>
+                  <td>1 óvulo + 1 espermatozoide</td>
+                  <td>2 óvulos distintos + 2 espermatozoides diferentes</td>
+                </tr>
+                <tr>
+                  <td>Origem dos embriões</td>
+                  <td>1 zigoto único se divide em dois embriões</td>
+                  <td>Formam-se 2 zigotos independentes</td>
+                </tr>
+                <tr>
+                  <td>Material genético (DNA)</td>
+                  <td>Praticamente 100% igual (idênticos)</td>
+                  <td>Diferentes (como irmãos comuns)</td>
+                </tr>
+                <tr>
+                  <td>Sexo biológico</td>
+                  <td>Obrigatoriamente o mesmo sexo</td>
+                  <td>Podem ter sexos iguais ou diferentes</td>
+                </tr>
+                <tr>
+                  <td>Casal (menino e menina)</td>
+                  <td>Impossível ocorrer</td>
+                  <td>Obrigatoriamente deste tipo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- =========================================================
+           ABA 2: QUIZ DA PROVA (10 QUESTÕES)
+           ========================================================= -->
+      <section id="panel-quiz" class="tab-panel quiz-shell" role="tabpanel" aria-labelledby="tab-quiz" hidden>
+
+        <!-- Barra de navegação numérica das 10 questões -->
+        <div class="quiz-nav-panel">
+          <div class="quiz-nav-top">
+            <div>
+              <h2 class="section-title">Simulado da Prova — 10 Questões</h2>
+              <p class="module-subtitle">Selecione uma alternativa para receber a correção imediata com explicação.</p>
+            </div>
+            <div class="filter-group">
+              <button type="button" class="btn btn-ghost btn-sm" id="btn-reset-quiz" onclick="handleResetQuiz(this)">
+                <i data-lucide="rotate-ccw" aria-hidden="true" width="16" height="16"></i>
+                <span>Refazer Quiz</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="question-dots" id="question-dots" role="navigation" aria-label="Navegação entre as 10 questões">
+            <!-- Preenchido via JS -->
+          </div>
+        </div>
+
+        <!-- Card da Questão Atual -->
+        <div id="quiz-card-mount"></div>
+
+        <!-- Painel de Resultado Final (exibido ao concluir as 10 questões ou quando solicitado) -->
+        <div id="quiz-results-mount"></div>
+
+      </section>
+
+      <footer class="page-footer">
+        <span>Baseado nos conteúdos de Ciências (8º ano): Sistema Genital Feminino, Gestação, Nascimento, Amamentação e Formação de Gêmeos.</span>
+        <span>Progresso salvo automaticamente durante a sessão.</span>
+      </footer>
+
+    </main>
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    (function () {
+      'use strict';
+
+      var TOPICS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+
+      var QUESTIONS = [
+        {
+          id: 1,
+          topicId: `a`,
+          domain: `Gestação e Pré-natal`,
+          topicLabel: `Tópico A · Placenta`,
+          stem: `Durante a gestação humana, a placenta é um órgão materno-fetal fundamental para a sobrevivência do bebê. Qual é a principal função da placenta?`,
+          options: [
+            `Produzir o líquido amniótico responsável por hidratar a pele do feto.`,
+            `Realizar as trocas de nutrientes, oxigênio e resíduos entre a mãe e o feto.`,
+            `Estimular diretamente as contrações das glândulas mamárias após o nascimento.`,
+            `Armazenar os gametas femininos até o momento da ovulação na tuba uterina.`
+          ],
+          correctIndex: 1,
+          explanation: `A placenta conecta mãe e feto por meio do cordão umbilical e realiza as trocas nutricionais (nutrientes), respiratórias (oxigênio e gás carbônico), imunológicas (anticorpos) e a excreção de resíduos metabólicos.`
+        },
+        {
+          id: 2,
+          topicId: `b`,
+          domain: `Gestação e Pré-natal`,
+          topicLabel: `Tópico B · Líquido Amniótico`,
+          stem: `O embrião e o feto se desenvolvem envolvidos pela bolsa amniótica, preenchida pelo líquido amniótico. Qual é o papel desse líquido durante a gestação?`,
+          options: [
+            `Transportar o sangue arterial da mãe diretamente para o coração do bebê.`,
+            `Substituir a função respiratória dos pulmões após o corte do cordão umbilical.`,
+            `Amortecer choques mecânicos e manter a temperatura estável para o feto.`,
+            `Impedir a passagem de nutrientes e anticorpos pelo cordão umbilical.`
+          ],
+          correctIndex: 2,
+          explanation: `O líquido amniótico envolve o embrião e o feto dentro da bolsa amniótica, protegendo contra choques mecânicos (impactos), evitando a desidratação e mantendo a temperatura estável.`
+        },
+        {
+          id: 3,
+          topicId: `c`,
+          domain: `Gestação e Pré-natal`,
+          topicLabel: `Tópico C · Ácido Fólico`,
+          stem: `Durante o acompanhamento pré-natal, os médicos costumam recomendar a suplementação de ácido fólico (vitamina B9) no início da gestação. Por que esse cuidado é tão importante?`,
+          options: [
+            `Porque estimula a ejeção do leite materno logo nas primeiras semanas de gravidez.`,
+            `Porque garante que o parto ocorra exclusivamente por via normal sem dilatação.`,
+            `Porque previne malformações no tubo neural (cérebro e medula) do embrião.`,
+            `Porque transforma gêmeos bivitelinos em gêmeos univitelinos idênticos.`
+          ],
+          correctIndex: 2,
+          explanation: `O ácido fólico (vitamina B9) é fundamental nas primeiras semanas da gestação para a formação correta do tubo neural, estrutura embrionária que dará origem ao cérebro e à medula espinhal.`
+        },
+        {
+          id: 4,
+          topicId: `d`,
+          domain: `Amamentação`,
+          topicLabel: `Tópico D · Aleitamento Exclusivo`,
+          stem: `A Organização Mundial da Saúde (OMS) recomenda o aleitamento materno exclusivo até os 6 meses de vida. O que significa aleitamento materno exclusivo?`,
+          options: [
+            `O bebê recebe leite materno intercalado com fórmulas infantis e água filtrada.`,
+            `O bebê recebe apenas leite materno, sem água, chás, sucos ou outros alimentos.`,
+            `O bebê recebe leite materno à noite e papinhas de frutas durante o dia.`,
+            `O bebê recebe colostro apenas na primeira hora e depois passa a tomar chás digestivos.`
+          ],
+          correctIndex: 1,
+          explanation: `Segundo a OMS, até os 6 meses o leite materno supre todas as necessidades nutricionais e de hidratação do bebê; portanto, ele deve receber apenas leite materno, sem água, chás, sucos ou outros alimentos.`
+        },
+        {
+          id: 5,
+          topicId: `e`,
+          domain: `Amamentação`,
+          topicLabel: `Tópico E · Colostro`,
+          stem: `Nos primeiros dias após o parto, a mãe produz um primeiro leite amarelado e espesso chamado colostro. Por que o colostro é tão importante para o recém-nascido?`,
+          options: [
+            `Ele contém alto teor de açúcar refinado para acelerar o ganho de peso imediato.`,
+            `Ele é rico em anticorpos e proteínas, funcionando como uma "primeira vacina".`,
+            `Ele substitui a necessidade de todas as vacinas do calendário infantil.`,
+            `Ele impede a contração do útero materno nas primeiras semanas após o parto.`
+          ],
+          correctIndex: 1,
+          explanation: `O colostro é o primeiro leite produzido nos dias iniciais pós-parto. Por ser rico em anticorpos e proteínas de fácil digestão, fortalece a imunidade do recém-nascido como uma "primeira vacina".`
+        },
+        {
+          id: 6,
+          topicId: `f`,
+          domain: `Amamentação`,
+          topicLabel: `Tópico F · Hormônios`,
+          stem: `A amamentação é controlada por dois hormônios principais ligados à hipófise: um responsável pela produção do leite e outro pela sua ejeção (saída) durante a sucção do bebê. Quais são esses hormônios, respectivamente?`,
+          options: [
+            `Estrogênio e progesterona.`,
+            `Hormônio folículo-estimulante (FSH) e hormônio luteinizante (LH).`,
+            `Prolactina e ocitocina.`,
+            `Adrenalina e insulina.`
+          ],
+          correctIndex: 2,
+          explanation: `A prolactina estimula a produção de leite pelas glândulas mamárias, enquanto a ocitocina (ou oxitocina) promove a ejeção/saída do leite em resposta ao estímulo da sucção.`
+        },
+        {
+          id: 7,
+          topicId: `g`,
+          domain: `Formação de Gêmeos`,
+          topicLabel: `Tópico G · Univitelinos`,
+          stem: `Como ocorre a formação de gêmeos univitelinos (monozigóticos ou idênticos)?`,
+          options: [
+            `Dois óvulos diferentes são fecundados por um mesmo espermatozoide na tuba uterina.`,
+            `Dois óvulos distintos são fecundados por dois espermatozoides diferentes ao mesmo tempo.`,
+            `Um único óvulo é fecundado por um espermatozoide e o zigoto se divide em dois.`,
+            `Um único óvulo se desenvolve sem fecundação após o estímulo da progesterona.`
+          ],
+          correctIndex: 2,
+          explanation: `Os gêmeos univitelinos (monozigóticos) originam-se de 1 único óvulo fecundado por 1 espermatozoide; o zigoto formado divide-se em dois embriões.`
+        },
+        {
+          id: 8,
+          topicId: `g`,
+          domain: `Formação de Gêmeos`,
+          topicLabel: `Tópico G · Genética de Univitelinos`,
+          stem: `Sobre os gêmeos univitelinos (idênticos), assinale a afirmação correta:`,
+          options: [
+            `Eles possuem materiais genéticos totalmente diferentes e podem ter sexos opostos.`,
+            `Eles compartilham praticamente 100% do mesmo material genético (DNA) e têm o mesmo sexo.`,
+            `Eles sempre se formam a partir de duas ovulações distintas no mesmo ciclo menstrual.`,
+            `Eles têm o mesmo DNA apenas quando são um menino e uma menina.`
+          ],
+          correctIndex: 1,
+          explanation: `Como vêm da divisão de um mesmo zigoto, gêmeos univitelinos têm praticamente 100% do mesmo material genético (DNA) e possuem obrigatoriamente o mesmo sexo biológico.`
+        },
+        {
+          id: 9,
+          topicId: `h`,
+          domain: `Formação de Gêmeos`,
+          topicLabel: `Tópico H · Bivitelinos`,
+          stem: `Como se formam os gêmeos bivitelinos (dizigóticos ou fraternos)?`,
+          options: [
+            `Um único óvulo é fecundado por dois espermatozoides simultaneamente.`,
+            `Dois óvulos distintos são liberados e fecundados por dois espermatozoides diferentes.`,
+            `Um único zigoto sofre divisão tardia após o terceiro mês de gestação.`,
+            `Apenas um óvulo é liberado e se divide antes mesmo de ocorrer a fecundação.`
+          ],
+          correctIndex: 1,
+          explanation: `Na formação de gêmeos bivitelinos (dizigóticos), dois óvulos distintos são liberados e fecundados por dois espermatozoides diferentes, originando dois embriões com DNAs distintos.`
+        },
+        {
+          id: 10,
+          topicId: `h`,
+          domain: `Formação de Gêmeos`,
+          topicLabel: `Tópico H · Casal de Gêmeos`,
+          stem: `Uma gestante espera um casal de gêmeos — um menino e uma menina. O que podemos afirmar com certeza sobre a formação desses gêmeos?`,
+          options: [
+            `Eles são obrigatoriamente gêmeos univitelinos (monozigóticos).`,
+            `Eles compartilham exatamente 100% do mesmo DNA, variando apenas a aparência.`,
+            `Eles são obrigatoriamente gêmeos bivitelinos (dizigóticos).`,
+            `Eles se originaram da divisão de um único zigoto nas primeiras horas após a fecundação.`
+          ],
+          correctIndex: 2,
+          explanation: `Gêmeos de sexos diferentes (um menino e uma menina) não podem vir de um único zigoto dividido. Eles são obrigatoriamente gêmeos bivitelinos (dizigóticos), frutos de dois óvulos e dois espermatozoides distintos.`
+        }
+      ];
+
+      var LETTERS = ['A', 'B', 'C', 'D'];
+
+      var appState = {
+        activeTab: 'resumo',
+        summaryFilter: 'all',
+        reviewedTopics: {},
+        currentQuestionIndex: 0,
+        answers: {}
+      };
+
+      function persistState() {
+        if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
+          return window.notebookAppApi.setAppState({
+            activeTab: appState.activeTab,
+            summaryFilter: appState.summaryFilter,
+            reviewedTopics: appState.reviewedTopics,
+            currentQuestionIndex: appState.currentQuestionIndex,
+            answers: appState.answers
+          }).catch(function () {});
+        }
+        return Promise.resolve();
+      }
+
+      function refreshIcons() {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      }
+
+      function countReviewed() {
+        var count = 0;
+        for (var i = 0; i < TOPICS.length; i++) {
+          if (appState.reviewedTopics[TOPICS[i]]) count++;
+        }
+        return count;
+      }
+
+      function getQuizStats() {
+        var answered = 0;
+        var correct = 0;
+        for (var i = 0; i < QUESTIONS.length; i++) {
+          var q = QUESTIONS[i];
+          var chosen = appState.answers[String(q.id)];
+          if (typeof chosen === 'number') {
+            answered++;
+            if (chosen === q.correctIndex) correct++;
+          }
+        }
+        var pct = answered > 0 ? Math.round((correct / answered) * 100) : null;
+        return { answered: answered, correct: correct, pct: pct };
+      }
+
+      function updateKPIs() {
+        var revCount = countReviewed();
+        var stats = getQuizStats();
+
+        var kpiResumoVal = document.getElementById('kpi-resumo-val');
+        var kpiResumoCap = document.getElementById('kpi-resumo-cap');
+        var kpiResumoCard = document.getElementById('kpi-card-resumo');
+        if (kpiResumoVal) kpiResumoVal.textContent = revCount + ' de ' + TOPICS.length;
+        if (kpiResumoCap && kpiResumoCard) {
+          if (revCount === TOPICS.length) {
+            kpiResumoCard.setAttribute('data-status', 'ok');
+            kpiResumoCap.setAttribute('data-status', 'ok');
+            kpiResumoCap.textContent = 'Todos os tópicos revisados';
+          } else {
+            kpiResumoCard.setAttribute('data-status', 'info');
+            kpiResumoCap.removeAttribute('data-status');
+            kpiResumoCap.textContent = 'Faltam ' + (TOPICS.length - revCount) + ' tópico(s) para concluir';
+          }
+        }
+
+        var kpiQuizVal = document.getElementById('kpi-quiz-val');
+        var kpiQuizCap = document.getElementById('kpi-quiz-cap');
+        var kpiQuizCard = document.getElementById('kpi-card-quiz');
+        var badgeQuiz = document.getElementById('badge-quiz-count');
+        if (kpiQuizVal) kpiQuizVal.textContent = stats.answered + ' de ' + QUESTIONS.length;
+        if (badgeQuiz) badgeQuiz.textContent = stats.answered + '/' + QUESTIONS.length;
+        if (kpiQuizCap && kpiQuizCard) {
+          if (stats.answered === QUESTIONS.length) {
+            kpiQuizCard.setAttribute('data-status', 'ok');
+            kpiQuizCap.setAttribute('data-status', 'ok');
+            kpiQuizCap.textContent = 'Simulado concluído';
+          } else {
+            kpiQuizCard.setAttribute('data-status', 'info');
+            kpiQuizCap.removeAttribute('data-status');
+            kpiQuizCap.textContent = 'Alternativas com feedback imediato';
+          }
+        }
+
+        var kpiScoreVal = document.getElementById('kpi-score-val');
+        var kpiScoreCap = document.getElementById('kpi-score-cap');
+        var kpiScoreCard = document.getElementById('kpi-card-score');
+        if (kpiScoreVal && kpiScoreCap && kpiScoreCard) {
+          if (stats.pct === null) {
+            kpiScoreVal.textContent = '—';
+            kpiScoreCard.setAttribute('data-status', 'info');
+            kpiScoreCap.removeAttribute('data-status');
+            kpiScoreCap.textContent = 'Responda às questões para acompanhar';
+          } else {
+            kpiScoreVal.textContent = stats.pct + '%';
+            if (stats.pct >= 70) {
+              kpiScoreCard.setAttribute('data-status', 'ok');
+              kpiScoreCap.setAttribute('data-status', 'ok');
+            } else if (stats.pct >= 50) {
+              kpiScoreCard.setAttribute('data-status', 'warn');
+              kpiScoreCap.removeAttribute('data-status');
+            } else {
+              kpiScoreCard.setAttribute('data-status', 'alert');
+              kpiScoreCap.setAttribute('data-status', 'alert');
+            }
+            kpiScoreCap.textContent = stats.correct + ' acerto(s) em ' + stats.answered + ' respondida(s)';
+          }
+        }
+
+        var statusChip = document.getElementById('study-status-chip');
+        if (statusChip) {
+          if (stats.answered === QUESTIONS.length && stats.pct >= 70 && revCount === TOPICS.length) {
+            statusChip.setAttribute('data-status', 'ok');
+            statusChip.textContent = 'Pronto para a prova';
+          } else if (stats.answered === QUESTIONS.length) {
+            statusChip.setAttribute('data-status', 'info');
+            statusChip.textContent = 'Simulado completo · ' + stats.correct + '/10';
+          } else if (revCount > 0 || stats.answered > 0) {
+            statusChip.setAttribute('data-status', 'info');
+            statusChip.textContent = 'Estudo em andamento';
+          } else {
+            statusChip.setAttribute('data-status', 'info');
+            statusChip.textContent = 'Pronto para revisar';
+          }
+        }
+      }
+
+      function renderSummaryReviewStates() {
+        for (var i = 0; i < TOPICS.length; i++) {
+          var id = TOPICS[i];
+          var isDone = Boolean(appState.reviewedTopics[id]);
+          var card = document.getElementById('topic-' + id);
+          var chip = document.getElementById('chip-topic-' + id);
+          if (card) {
+            card.setAttribute('data-reviewed', isDone ? 'true' : 'false');
+            var btn = card.querySelector('.review-toggle');
+            if (btn) {
+              btn.setAttribute('aria-pressed', isDone ? 'true' : 'false');
+              var span = btn.querySelector('span');
+              if (span) span.textContent = isDone ? 'Revisado' : 'Marcar como revisado';
+            }
+          }
+          if (chip) {
+            chip.setAttribute('data-status', isDone ? 'ok' : 'neutral');
+            chip.textContent = isDone ? 'Revisado' : 'Pendente';
+          }
+        }
+      }
+
+      function applySummaryFilter(filterKey) {
+        appState.summaryFilter = filterKey;
+        var pills = document.querySelectorAll('.filter-pill');
+        for (var i = 0; i < pills.length; i++) {
+          var pill = pills[i];
+          var active = pill.getAttribute('data-filter') === filterKey;
+          pill.setAttribute('aria-pressed', active ? 'true' : 'false');
+        }
+        var blocks = document.querySelectorAll('.module-block');
+        for (var j = 0; j < blocks.length; j++) {
+          var block = blocks[j];
+          var blockType = block.getAttribute('data-block');
+          if (filterKey === 'all' || blockType === filterKey) {
+            block.removeAttribute('hidden');
+          } else {
+            block.setAttribute('hidden', '');
+          }
+        }
+      }
+
+      function renderQuestionDots() {
+        var container = document.getElementById('question-dots');
+        if (!container) return;
+        var html = '';
+        for (var i = 0; i < QUESTIONS.length; i++) {
+          var q = QUESTIONS[i];
+          var chosen = appState.answers[String(q.id)];
+          var state = 'pending';
+          if (typeof chosen === 'number') {
+            state = chosen === q.correctIndex ? 'correct' : 'wrong';
+          }
+          var isCurr = i === appState.currentQuestionIndex ? 'true' : 'false';
+          var numLabel = q.id < 10 ? '0' + q.id : String(q.id);
+          html += '<button type="button" class="q-dot" data-state="' + state + '" data-current="' + isCurr + '" aria-label="Questão ' + q.id + '" onclick="goToQuestion(' + i + ')">' + numLabel + '</button>';
+        }
+        container.innerHTML = html;
+      }
+
+      function renderCurrentQuestion() {
+        var mount = document.getElementById('quiz-card-mount');
+        if (!mount) return;
+
+        var idx = appState.currentQuestionIndex;
+        if (idx < 0) idx = 0;
+        if (idx >= QUESTIONS.length) idx = QUESTIONS.length - 1;
+        appState.currentQuestionIndex = idx;
+
+        var q = QUESTIONS[idx];
+        var chosen = appState.answers[String(q.id)];
+        var isAnswered = typeof chosen === 'number';
+        var isCorrect = isAnswered && chosen === q.correctIndex;
+        var cardResult = !isAnswered ? 'pending' : (isCorrect ? 'correct' : 'wrong');
+
+        var qNumStr = q.id < 10 ? '0' + q.id : String(q.id);
+        var statusChipHtml = !isAnswered
+          ? '<span class="chip" data-status="info">Aguardando resposta</span>'
+          : (isCorrect
+              ? '<span class="chip" data-status="ok">Resposta correta</span>'
+              : '<span class="chip" data-status="alert">Resposta incorreta</span>');
+
+        var optionsHtml = '';
+        for (var i = 0; i < q.options.length; i++) {
+          var choiceState = 'default';
+          if (isAnswered) {
+            if (i === q.correctIndex) {
+              choiceState = 'correct';
+            } else if (i === chosen) {
+              choiceState = 'wrong';
+            } else {
+              choiceState = 'dimmed';
+            }
+          }
+          optionsHtml +=
+            '<button type="button" class="option-btn" data-choice-state="' + choiceState + '" ' +
+            (isAnswered ? 'disabled' : 'onclick="selectAnswer(' + q.id + ', ' + i + ')"') + '>' +
+              '<span class="option-letter">' + LETTERS[i] + '</span>' +
+              '<span>' + q.options[i] + '</span>' +
+            '</button>';
+        }
+
+        var feedbackHtml = '';
+        if (isAnswered) {
+          var fbStatus = isCorrect ? 'ok' : 'alert';
+          var fbTitle = isCorrect
+            ? 'Muito bem! Alternativa ' + LETTERS[q.correctIndex] + ' está correta.'
+            : 'Ops! Você marcou ' + LETTERS[chosen] + ', mas a correta é a alternativa ' + LETTERS[q.correctIndex] + '.';
+          feedbackHtml =
+            '<div class="feedback-box" data-status="' + fbStatus + '" role="status">' +
+              '<p class="feedback-title">' + fbTitle + '</p>' +
+              '<p class="feedback-text">' + q.explanation + '</p>' +
+              '<div>' +
+                '<button type="button" class="btn btn-secondary btn-sm" onclick="jumpToTopic(\'' + q.topicId + '\')">' +
+                  '<i data-lucide="book-open" aria-hidden="true" width="15" height="15"></i>' +
+                  '<span>Revisar ' + q.topicLabel + '</span>' +
+                '</button>' +
+              '</div>' +
+            '</div>';
+        }
+
+        var prevDisabled = idx === 0 ? 'disabled' : '';
+        var nextBtnHtml = idx < QUESTIONS.length - 1
+          ? '<button type="button" class="btn btn-primary" onclick="goToQuestion(' + (idx + 1) + ')">' +
+              '<span>Próxima questão</span>' +
+              '<i data-lucide="arrow-right" aria-hidden="true" width="18" height="18"></i>' +
+            '</button>'
+          : '<button type="button" class="btn btn-primary" onclick="scrollToResults()">' +
+              '<span>Ver resultado final</span>' +
+              '<i data-lucide="award" aria-hidden="true" width="18" height="18"></i>' +
+            '</button>';
+
+        mount.innerHTML =
+          '<article class="question-card" data-result="' + cardResult + '">' +
+            '<div class="question-meta">' +
+              '<span class="kicker">Questão ' + qNumStr + ' de ' + QUESTIONS.length + ' · ' + q.topicLabel + '</span>' +
+              statusChipHtml +
+            '</div>' +
+            '<h3 class="question-stem">' + q.stem + '</h3>' +
+            '<div class="options-list" role="group" aria-label="Alternativas da questão ' + q.id + '">' +
+              optionsHtml +
+            '</div>' +
+            feedbackHtml +
+            '<div class="question-actions">' +
+              '<button type="button" class="btn btn-ghost" ' + prevDisabled + ' onclick="goToQuestion(' + (idx - 1) + ')">' +
+                '<i data-lucide="arrow-left" aria-hidden="true" width="18" height="18"></i>' +
+                '<span>Anterior</span>' +
+              '</button>' +
+              nextBtnHtml +
+            '</div>' +
+          '</article>';
+      }
+
+      function renderResultsPanel() {
+        var mount = document.getElementById('quiz-results-mount');
+        if (!mount) return;
+        var stats = getQuizStats();
+        if (stats.answered < QUESTIONS.length) {
+          mount.innerHTML = '';
+          return;
+        }
+
+        var domains = [
+          { name: 'Gestação e Pré-natal', total: 0, ok: 0 },
+          { name: 'Amamentação', total: 0, ok: 0 },
+          { name: 'Formação de Gêmeos', total: 0, ok: 0 }
+        ];
+        for (var i = 0; i < QUESTIONS.length; i++) {
+          var q = QUESTIONS[i];
+          var chosen = appState.answers[String(q.id)];
+          for (var d = 0; d < domains.length; d++) {
+            if (domains[d].name === q.domain) {
+              domains[d].total++;
+              if (chosen === q.correctIndex) domains[d].ok++;
+            }
+          }
+        }
+
+        var statusAttr = stats.pct >= 70 ? 'ok' : (stats.pct >= 50 ? 'warn' : 'alert');
+        var chipStatus = stats.pct >= 70 ? 'ok' : (stats.pct >= 50 ? 'info' : 'alert');
+        var verdictLabel = stats.pct >= 90
+          ? 'Excelente preparo para a prova'
+          : (stats.pct >= 70
+              ? 'Bom desempenho — revise os detalhes'
+              : 'Vale reler os tópicos no Resumo');
+
+        var domainHtml = '';
+        for (var j = 0; j < domains.length; j++) {
+          var dm = domains[j];
+          var dpct = Math.round((dm.ok / dm.total) * 100);
+          var isGood = dpct >= 70 ? 'true' : 'false';
+          domainHtml +=
+            '<div class="domain-stat">' +
+              '<span class="kpi-label">' + dm.name + '</span>' +
+              '<strong>' + dm.ok + ' de ' + dm.total + ' acertos (' + dpct + '%)</strong>' +
+              '<div class="meter-track"><div class="meter-fill" data-good="' + isGood + '" style="width: ' + dpct + '%;"></div></div>' +
+            '</div>';
+        }
+
+        mount.innerHTML =
+          '<section class="results-card" data-status="' + statusAttr + '">' +
+            '<div class="results-header">' +
+              '<div>' +
+                '<p class="kicker">Resultado Final do Simulado</p>' +
+                '<p class="score-big">' + stats.correct + ' / ' + QUESTIONS.length + ' (' + stats.pct + '%)</p>' +
+              '</div>' +
+              '<span class="chip" data-status="' + chipStatus + '">' + verdictLabel + '</span>' +
+            '</div>' +
+            '<div class="domain-breakdown">' + domainHtml + '</div>' +
+            '<div class="filter-group">' +
+              '<button type="button" class="btn btn-primary" onclick="handleResetQuiz(this)">' +
+                '<i data-lucide="rotate-ccw" aria-hidden="true" width="18" height="18"></i>' +
+                '<span>Refazer Quiz</span>' +
+              '</button>' +
+              '<button type="button" class="btn btn-secondary" onclick="switchTab(\'resumo\')">' +
+                '<i data-lucide="book-open" aria-hidden="true" width="18" height="18"></i>' +
+                '<span>Voltar ao Resumo</span>' +
+              '</button>' +
+            '</div>' +
+          '</section>';
+      }
+
+      function applyActiveTab(tabKey) {
+        appState.activeTab = tabKey;
+        var isResumo = tabKey === 'resumo';
+        var tabResumo = document.getElementById('tab-resumo');
+        var tabQuiz = document.getElementById('tab-quiz');
+        var panelResumo = document.getElementById('panel-resumo');
+        var panelQuiz = document.getElementById('panel-quiz');
+
+        if (tabResumo) tabResumo.setAttribute('aria-selected', isResumo ? 'true' : 'false');
+        if (tabQuiz) tabQuiz.setAttribute('aria-selected', isResumo ? 'false' : 'true');
+        if (panelResumo) {
+          if (isResumo) panelResumo.removeAttribute('hidden');
+          else panelResumo.setAttribute('hidden', '');
+        }
+        if (panelQuiz) {
+          if (isResumo) panelQuiz.setAttribute('hidden', '');
+          else panelQuiz.removeAttribute('hidden');
+        }
+      }
+
+      /* Hoisted global handlers for inline HTML events */
+      window.switchTab = function (tabKey) {
+        applyActiveTab(tabKey);
+        if (tabKey === 'quiz') {
+          renderQuestionDots();
+          renderCurrentQuestion();
+          renderResultsPanel();
+        }
+        refreshIcons();
+        persistState();
+      };
+
+      window.filterSummary = function (filterKey) {
+        applySummaryFilter(filterKey);
+        persistState();
+      };
+
+      window.toggleTopicReviewed = function (topicId) {
+        appState.reviewedTopics[topicId] = !appState.reviewedTopics[topicId];
+        renderSummaryReviewStates();
+        updateKPIs();
+        refreshIcons();
+        persistState();
+      };
+
+      window.markAllReviewed = function () {
+        var allDone = countReviewed() === TOPICS.length;
+        for (var i = 0; i < TOPICS.length; i++) {
+          appState.reviewedTopics[TOPICS[i]] = !allDone;
+        }
+        renderSummaryReviewStates();
+        updateKPIs();
+        refreshIcons();
+        persistState();
+      };
+
+      window.goToQuestion = function (index) {
+        appState.currentQuestionIndex = index;
+        renderQuestionDots();
+        renderCurrentQuestion();
+        refreshIcons();
+        persistState();
+      };
+
+      window.selectAnswer = function (questionId, optionIndex) {
+        if (typeof appState.answers[String(questionId)] === 'number') return;
+        appState.answers[String(questionId)] = optionIndex;
+        renderQuestionDots();
+        renderCurrentQuestion();
+        renderResultsPanel();
+        updateKPIs();
+        refreshIcons();
+        persistState();
+      };
+
+      window.jumpToTopic = function (topicId) {
+        applySummaryFilter('all');
+        applyActiveTab('resumo');
+        refreshIcons();
+        persistState();
+        var el = document.getElementById('topic-' + topicId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.classList.add('is-highlighted');
+          setTimeout(function () {
+            el.classList.remove('is-highlighted');
+          }, 1600);
+        }
+      };
+
+      window.scrollToResults = function () {
+        var el = document.getElementById('quiz-results-mount');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      window.handleResetQuiz = function (btn) {
+        var stats = getQuizStats();
+        if (stats.answered > 0 && btn && btn.dataset.armed !== 'true') {
+          btn.dataset.armed = 'true';
+          var labelSpan = btn.querySelector('span');
+          if (labelSpan) labelSpan.textContent = 'Confirmar reinício';
+          setTimeout(function () {
+            if (btn.dataset.armed === 'true') {
+              btn.dataset.armed = 'false';
+              if (labelSpan) labelSpan.textContent = 'Refazer Quiz';
+            }
+          }, 3500);
+          return;
+        }
+        if (btn) {
+          btn.dataset.armed = 'false';
+          var sp = btn.querySelector('span');
+          if (sp) sp.textContent = 'Refazer Quiz';
+        }
+        appState.answers = {};
+        appState.currentQuestionIndex = 0;
+        renderQuestionDots();
+        renderCurrentQuestion();
+        renderResultsPanel();
+        updateKPIs();
+        refreshIcons();
+        persistState();
+      };
+
+      async function initApp() {
+        try {
+          if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === 'function') {
+            var saved = await window.notebookAppApi.getAppState();
+            if (saved && typeof saved === 'object') {
+              if (saved.activeTab === 'resumo' || saved.activeTab === 'quiz') {
+                appState.activeTab = saved.activeTab;
+              }
+              if (typeof saved.summaryFilter === 'string') {
+                appState.summaryFilter = saved.summaryFilter;
+              }
+              if (saved.reviewedTopics && typeof saved.reviewedTopics === 'object') {
+                appState.reviewedTopics = saved.reviewedTopics;
+              }
+              if (typeof saved.currentQuestionIndex === 'number') {
+                appState.currentQuestionIndex = saved.currentQuestionIndex;
+              }
+              if (saved.answers && typeof saved.answers === 'object') {
+                appState.answers = saved.answers;
+              }
+            }
+          }
+        } catch (err) {
+          /* Continua com o estado inicial padrão */
+        }
+
+        applySummaryFilter(appState.summaryFilter);
+        renderSummaryReviewStates();
+        applyActiveTab(appState.activeTab);
+        renderQuestionDots();
+        renderCurrentQuestion();
+        renderResultsPanel();
+        updateKPIs();
+        refreshIcons();
+
+        if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
+          window.notebookAppApi.notifyAppReady();
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initApp);
+      } else {
+        initApp();
+      }
+    })();
+  </script>
+</body>
+</html>
